@@ -30,7 +30,7 @@ def synthesis(engine_url: str, speaker: int, query: Dict[str, Any]) -> bytes:
         'speaker': speaker,
     }
 
-    r = requests.post(urljoin(engine_url, 'synthesis?speaker=1'), headers=headers, data=json.dumps(query).encode('utf-8'))
+    r = requests.post(urljoin(engine_url, 'synthesis'), headers=headers, params=params, data=json.dumps(query).encode('utf-8'))
 
     if r.status_code != 200:
         raise Exception(r.text)
